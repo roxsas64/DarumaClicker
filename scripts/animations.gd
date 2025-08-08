@@ -1,8 +1,8 @@
 extends MarginContainer
 
-@onready var template: Label = $"../../Indicators/Template"
+@onready var template: Label = $"../Indicators/Template"
 @onready var click_button: TextureButton = $CenterContainer/ClickButton
-@onready var indicators: Control = $"../../Indicators"
+@onready var indicators: Control = $"../Indicators"
 @onready var boredTimer: Timer = $CenterContainer/ClickButton/BoredTimer
 @onready var darumaAnimation: AnimationPlayer = $CenterContainer/ClickButton/Daruma/Sprite2D/AnimationPlayer
 

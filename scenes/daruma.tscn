@@ -7,22 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dqy81agn405oe" path="res://assets/darumaPlayer/DarumaPlayerLookRightEyes.png" id="5_ot2jk"]
 [ext_resource type="Texture2D" uid="uid://dt2so8u3qydnx" path="res://assets/darumaPlayer/DarumaPlayerLookBored.png" id="6_dpiwc"]
 
-[sub_resource type="Animation" id="Animation_tqnp8"]
-resource_name = "neutral"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_npgxb"), ExtResource("3_5n1fe")]
-}
-
 [sub_resource type="Animation" id="Animation_qhs10"]
 length = 0.001
 tracks/0/type = "value"
@@ -53,6 +37,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_npgxb"), ExtResource("4_fqubr"), ExtResource("2_npgxb"), ExtResource("5_ot2jk"), ExtResource("2_npgxb"), ExtResource("6_dpiwc")]
+}
+
+[sub_resource type="Animation" id="Animation_tqnp8"]
+resource_name = "neutral"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_npgxb"), ExtResource("3_5n1fe")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fqubr"]

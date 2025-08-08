@@ -1,68 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://m71jmr38311o"]
+[gd_scene load_steps=8 format=3 uid="uid://m71jmr38311o"]
 
 [ext_resource type="Script" uid="uid://brw6i77vhxec2" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://dgftujxalnbpw" path="res://scripts/animations.gd" id="2_p57ef"]
-[ext_resource type="Texture2D" uid="uid://dfmqpsx81k1vq" path="res://assets/img/sunburst.png" id="2_u5sy4"]
 [ext_resource type="Script" uid="uid://x2xvs7qtouin" path="res://scripts/destroy_1sec.gd" id="3_gee14"]
 [ext_resource type="Script" uid="uid://bxb3q7qwo3g50" path="res://scripts/stats.gd" id="3_lnu2h"]
 [ext_resource type="FontFile" uid="uid://mfkupeuqdvyw" path="res://assets/fonts/Fredoka-Bold.ttf" id="4_iywne"]
 [ext_resource type="FontFile" uid="uid://b7n16jqhhmd2f" path="res://assets/fonts/Fredoka-Regular.ttf" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dhyaci7g6fqgf" path="res://scenes/daruma.tscn" id="8_gee14"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
-bg_color = Color(0.027451, 0.541176, 1, 1)
-
-[sub_resource type="Animation" id="Animation_gee14"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_u5sy4"]
-resource_name = "spin_background"
-length = 30.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 30),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0tnpc"]
-_data = {
-&"RESET": SubResource("Animation_gee14"),
-&"spin_background": SubResource("Animation_u5sy4")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
-bg_color = Color(0, 0.293246, 0.564313, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
-content_margin_left = 20.0
-content_margin_top = 5.0
-content_margin_right = 2.0
-content_margin_bottom = 5.0
-bg_color = Color(0.497043, 0.703055, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -94,30 +38,7 @@ script = ExtResource("3_gee14")
 
 [node name="DestroyTimer" type="Timer" parent="Indicators/Template"]
 
-[node name="LeftPanel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 825.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lnu2h")
-
-[node name="Background" type="TextureRect" parent="LeftPanel"]
-modulate = Color(1, 1, 1, 0.784314)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.1, 1.1)
-pivot_offset = Vector2(412, 324)
-texture = ExtResource("2_u5sy4")
-expand_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="LeftPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,18 +51,18 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 script = ExtResource("2_p57ef")
 
-[node name="Stats" type="VBoxContainer" parent="LeftPanel/MarginContainer"]
+[node name="Stats" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 script = ExtResource("3_lnu2h")
 
-[node name="OmamoriLabel" type="Label" parent="LeftPanel/MarginContainer/Stats"]
+[node name="OmamoriLabel" type="Label" parent="MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_iywne")
 theme_override_font_sizes/font_size = 40
 text = "0 Omamori"
 
-[node name="OmamoriLabel2" type="Label" parent="LeftPanel/MarginContainer/Stats"]
+[node name="OmamoriLabel2" type="Label" parent="MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 10
@@ -149,61 +70,27 @@ theme_override_fonts/font = ExtResource("5_p57ef")
 theme_override_font_sizes/font_size = 25
 text = "0 Per Second"
 
-[node name="CenterContainer" type="CenterContainer" parent="LeftPanel/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ClickButton" type="TextureButton" parent="LeftPanel/MarginContainer/CenterContainer"]
+[node name="ClickButton" type="TextureButton" parent="MarginContainer/CenterContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Daruma" parent="LeftPanel/MarginContainer/CenterContainer/ClickButton" instance=ExtResource("8_gee14")]
+[node name="Daruma" parent="MarginContainer/CenterContainer/ClickButton" instance=ExtResource("8_gee14")]
 position = Vector2(94, 97)
 scale = Vector2(2.95, 2.95)
 
-[node name="BoredTimer" type="Timer" parent="LeftPanel/MarginContainer/CenterContainer/ClickButton"]
+[node name="BoredTimer" type="Timer" parent="MarginContainer/CenterContainer/ClickButton"]
 wait_time = 10.0
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftPanel"]
-libraries = {
-&"": SubResource("AnimationLibrary_0tnpc")
-}
-autoplay = "spin_background"
-
-[node name="RightPanel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -327.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u5sy4")
-
-[node name="Label" type="Label" parent="RightPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -138.0
-offset_top = 20.0
-offset_right = 138.0
-offset_bottom = 91.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("4_iywne")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
-text = "UPGRADES"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="omamori_changed" from="." to="LeftPanel/MarginContainer/Stats" method="_on_game_omamori_changed"]
-[connection signal="omamori_clicked" from="." to="LeftPanel/MarginContainer" method="_on_game_omamori_clicked"]
+[connection signal="omamori_changed" from="." to="MarginContainer/Stats" method="_on_game_omamori_changed"]
+[connection signal="omamori_clicked" from="." to="MarginContainer" method="_on_game_omamori_clicked"]
 [connection signal="timeout" from="Indicators/Template/DestroyTimer" to="Indicators/Template" method="_on_destroy_timer_timeout"]
-[connection signal="button_down" from="LeftPanel/MarginContainer/CenterContainer/ClickButton" to="." method="_on_click_button_button_down"]
-[connection signal="button_down" from="LeftPanel/MarginContainer/CenterContainer/ClickButton" to="LeftPanel/MarginContainer" method="_on_click_button_button_down"]
-[connection signal="button_up" from="LeftPanel/MarginContainer/CenterContainer/ClickButton" to="LeftPanel/MarginContainer" method="_on_click_button_button_up"]
-[connection signal="timeout" from="LeftPanel/MarginContainer/CenterContainer/ClickButton/BoredTimer" to="LeftPanel/MarginContainer" method="_on_bored_timer_timeout"]
+[connection signal="button_down" from="MarginContainer/CenterContainer/ClickButton" to="." method="_on_click_button_button_down"]
+[connection signal="button_down" from="MarginContainer/CenterContainer/ClickButton" to="MarginContainer" method="_on_click_button_button_down"]
+[connection signal="button_up" from="MarginContainer/CenterContainer/ClickButton" to="MarginContainer" method="_on_click_button_button_up"]
+[connection signal="timeout" from="MarginContainer/CenterContainer/ClickButton/BoredTimer" to="MarginContainer" method="_on_bored_timer_timeout"]
