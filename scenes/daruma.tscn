@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhyaci7g6fqgf"]
+[gd_scene load_steps=13 format=3 uid="uid://dhyaci7g6fqgf"]
 
 [ext_resource type="Texture2D" uid="uid://sg7tbs3bn5lm" path="res://assets/darumaPlayer/DarumaPlayerBody.png" id="1_tdtwx"]
 [ext_resource type="Texture2D" uid="uid://cri18k1tgetdo" path="res://assets/darumaPlayer/DarumaPlayerNeutralEyes.png" id="2_npgxb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cutj2gjjvgfmg" path="res://assets/darumaPlayer/DarumaPlayerLookLeftEyes.png" id="4_fqubr"]
 [ext_resource type="Texture2D" uid="uid://dqy81agn405oe" path="res://assets/darumaPlayer/DarumaPlayerLookRightEyes.png" id="5_ot2jk"]
 [ext_resource type="Texture2D" uid="uid://dt2so8u3qydnx" path="res://assets/darumaPlayer/DarumaPlayerLookBored.png" id="6_dpiwc"]
+[ext_resource type="Texture2D" uid="uid://d4etu6hryx7b7" path="res://assets/darumaPlayer/DarumaPlayerLookAngry.png" id="7_ot2jk"]
 
 [sub_resource type="Animation" id="Animation_qhs10"]
 length = 0.001
@@ -20,6 +21,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_npgxb")]
+}
+
+[sub_resource type="Animation" id="Animation_dpiwc"]
+resource_name = "angry"
+length = 4.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_npgxb"), ExtResource("6_dpiwc"), ExtResource("7_ot2jk"), ExtResource("3_5n1fe"), ExtResource("2_npgxb")]
 }
 
 [sub_resource type="Animation" id="Animation_dbt4f"]
@@ -41,6 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_tqnp8"]
 resource_name = "neutral"
+length = 2.5
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,26 +68,27 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.966667, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_npgxb"), ExtResource("3_5n1fe")]
+"values": [ExtResource("2_npgxb"), ExtResource("3_5n1fe"), ExtResource("2_npgxb")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fqubr"]
 _data = {
 &"RESET": SubResource("Animation_qhs10"),
+&"angry": SubResource("Animation_dpiwc"),
 &"bored": SubResource("Animation_dbt4f"),
 &"neutral": SubResource("Animation_tqnp8")
 }
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="DarumaBody" type="Sprite2D"]
 texture = ExtResource("1_tdtwx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DarumaEyes" type="Sprite2D" parent="."]
 texture = ExtResource("2_npgxb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarumaEyes"]
 libraries = {
 &"": SubResource("AnimationLibrary_fqubr")
 }

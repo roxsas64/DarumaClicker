@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var click_button: TextureButton = $CenterContainer/ClickButton
 @onready var indicators: Control = $"../Indicators"
 @onready var boredTimer: Timer = $CenterContainer/ClickButton/BoredTimer
-@onready var darumaAnimation: AnimationPlayer = $CenterContainer/ClickButton/Daruma/Sprite2D/AnimationPlayer
+@onready var darumaAnimation: AnimationPlayer = $CenterContainer/ClickButton/Daruma/DarumaEyes/AnimationPlayer
 
 func _ready() -> void:
 	click_button.pivot_offset = click_button.size / 2
