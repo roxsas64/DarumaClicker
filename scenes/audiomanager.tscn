@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://yrqchh5ajur7"]
+
+[ext_resource type="Script" uid="uid://cpqgtkc2k1a2y" path="res://scripts/audiomanager.gd" id="1_ab2wy"]
+[ext_resource type="AudioStream" uid="uid://btee8r0hj5i2p" path="res://assets/audio/SFX/ClickOnDaruma1.wav" id="1_exa1w"]
+[ext_resource type="AudioStream" uid="uid://ccy37h41s8egg" path="res://assets/audio/SFX/ClickOnMenu.wav" id="3_u8h23"]
+[ext_resource type="AudioStream" uid="uid://re11j8c43n0p" path="res://assets/audio/SFX/BuyItem2.wav" id="4_wqicy"]
+
+[node name="Audiomanager" type="Node"]
+script = ExtResource("1_ab2wy")
+
+[node name="ClickOnDaruma" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_exa1w")
+
+[node name="ClickOnMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u8h23")
+
+[node name="BuyItem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wqicy")

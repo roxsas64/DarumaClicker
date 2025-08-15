@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjfn0htxq8iw4"]
+
+[ext_resource type="Script" uid="uid://c0lyst0w5kb7t" path="res://scripts/itemBuy.gd" id="1_fo0li"]
+[ext_resource type="Texture2D" uid="uid://bk6knrqwqdve3" path="res://assets/items/ManekiNeko.png" id="1_kchgi"]
+
+[node name="Item" type="Control"]
+layout_mode = 3
+anchor_right = 0.19
+anchor_bottom = 0.334
+offset_right = -218.88
+offset_bottom = -216.432
+script = ExtResource("1_fo0li")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 217.0
+
+[node name="Buy" type="Button" parent="."]
+layout_mode = 2
+offset_left = 145.0
+offset_top = 162.0
+offset_right = 212.0
+offset_bottom = 212.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Buy
+"
+
+[node name="ItemLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 120.0
+offset_right = 199.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "manekineko"
+
+[node name="PriceTag" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 166.0
+offset_right = 136.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "20 dolale"
+
+[node name="ItemIcon" type="Sprite2D" parent="."]
+position = Vector2(105, 67)
+scale = Vector2(3.375, 3.375)
+texture = ExtResource("1_kchgi")
+
+[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]

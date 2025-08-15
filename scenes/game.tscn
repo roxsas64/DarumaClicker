@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://m71jmr38311o"]
+[gd_scene load_steps=15 format=4 uid="uid://m71jmr38311o"]
 
 [ext_resource type="Script" uid="uid://brw6i77vhxec2" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dtp8ft02o7jq" path="res://assets/tiles/Tiles.png" id="2_gee14"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://x2xvs7qtouin" path="res://scripts/destroy_1sec.gd" id="3_gee14"]
 [ext_resource type="Script" uid="uid://bxb3q7qwo3g50" path="res://scripts/stats.gd" id="3_lnu2h"]
 [ext_resource type="FontFile" uid="uid://chxh00y3mkhtv" path="res://assets/fonts/PixelGosub-ZaRz.ttf" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://bk6knrqwqdve3" path="res://assets/items/ManekiNeko.png" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dhyaci7g6fqgf" path="res://scenes/daruma.tscn" id="8_gee14"]
+[ext_resource type="Script" uid="uid://ciwc7otidsbn0" path="res://scripts/shop_button.gd" id="8_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cjfn0htxq8iw4" path="res://scenes/item_buy.tscn" id="8_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("2_gee14")
@@ -456,6 +459,43 @@ scale = Vector2(2.95, 2.95)
 wait_time = 10.0
 autostart = true
 
+[node name="ShopButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("7_0tnpc")
+theme_override_font_sizes/font_size = 50
+text = "Shop"
+script = ExtResource("8_kvpfn")
+
+[node name="Catalogue" type="ColorRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Item" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 27.0
+offset_right = -171.68
+offset_bottom = -162.712
+itemName = "maneki"
+price = 20
+itemTexture = ExtResource("8_0tnpc")
+
+[node name="CloseShop" type="Button" parent="MarginContainer/Catalogue"]
+layout_mode = 0
+offset_left = 988.0
+offset_top = 11.0
+offset_right = 1062.0
+offset_bottom = 62.0
+text = "X"
+
+[node name="manekiNeko" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(780, 131)
+scale = Vector2(3, 3)
+texture = ExtResource("8_0tnpc")
+
 [connection signal="omamori_changed" from="." to="MarginContainer/Stats" method="_on_game_omamori_changed"]
 [connection signal="omamori_clicked" from="." to="MarginContainer" method="_on_game_omamori_clicked"]
 [connection signal="timeout" from="Indicators/Template/DestroyTimer" to="Indicators/Template" method="_on_destroy_timer_timeout"]
@@ -463,3 +503,5 @@ autostart = true
 [connection signal="button_down" from="MarginContainer/CenterContainer/ClickButton" to="MarginContainer" method="_on_click_button_button_down"]
 [connection signal="button_up" from="MarginContainer/CenterContainer/ClickButton" to="MarginContainer" method="_on_click_button_button_up"]
 [connection signal="timeout" from="MarginContainer/CenterContainer/ClickButton/BoredTimer" to="MarginContainer" method="_on_bored_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/ShopButton" to="MarginContainer/ShopButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Catalogue/CloseShop" to="MarginContainer/ShopButton" method="_on_close_shop_pressed"]

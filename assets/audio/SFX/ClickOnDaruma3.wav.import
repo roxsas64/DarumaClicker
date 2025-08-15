@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dpfrxji4gmkgm"
-path="res://.godot/imported/ClickOnDaruma3.wav-537493821315db4ca8e44571a01df16e.sample"
+path="res://.godot/imported/ClickOnDaruma3.wav-01908f8765fb10d7c79396aba67fb0ed.sample"
 
 [deps]
 
-source_file="res://sounds/ClickOnDaruma3.wav"
-dest_files=["res://.godot/imported/ClickOnDaruma3.wav-537493821315db4ca8e44571a01df16e.sample"]
+source_file="res://assets/audio/SFX/ClickOnDaruma3.wav"
+dest_files=["res://.godot/imported/ClickOnDaruma3.wav-01908f8765fb10d7c79396aba67fb0ed.sample"]
 
 [params]
 

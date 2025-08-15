@@ -13,6 +13,7 @@ func _on_click_button_button_down() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(click_button, "scale", Vector2(.9, .9), .1)
 	darumaAnimation.play("neutral")
+	Audiomanager.clickOndaruma.play()
 
 func _on_click_button_button_up() -> void:
 	var tween = get_tree().create_tween()
