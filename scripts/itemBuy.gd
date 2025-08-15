@@ -11,7 +11,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	itemLabel.text = itemName
-	priceTag.text = str(price)
+	priceTag.text = str(price) + " dolale"
 	itemIcon.texture = itemTexture
 
 
@@ -22,4 +22,6 @@ func _process(delta: float) -> void:
 
 
 func _on_buy_pressed() -> void:
-	print(Game.omamori)
+	if GameManager.omamori >= price:
+		# comprable
+		GameManager.minusOmamori(price)

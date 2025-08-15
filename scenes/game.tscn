@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://m71jmr38311o"]
+[gd_scene load_steps=16 format=4 uid="uid://m71jmr38311o"]
 
 [ext_resource type="Script" uid="uid://brw6i77vhxec2" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dtp8ft02o7jq" path="res://assets/tiles/Tiles.png" id="2_gee14"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhyaci7g6fqgf" path="res://scenes/daruma.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://ciwc7otidsbn0" path="res://scripts/shop_button.gd" id="8_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cjfn0htxq8iw4" path="res://scenes/item_buy.tscn" id="8_vtaks"]
+[ext_resource type="Texture2D" uid="uid://k3rcf0a1cqvi" path="res://assets/items/LuckyFish.png" id="11_kvpfn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("2_gee14")
@@ -469,7 +470,6 @@ text = "Shop"
 script = ExtResource("8_kvpfn")
 
 [node name="Catalogue" type="ColorRect" parent="MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Item" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
@@ -481,6 +481,16 @@ offset_bottom = -162.712
 itemName = "maneki"
 price = 20
 itemTexture = ExtResource("8_0tnpc")
+
+[node name="Item2" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
+layout_mode = 1
+offset_left = 280.0
+offset_top = 25.0
+offset_right = 76.32
+offset_bottom = -164.712
+itemName = "caro"
+price = 20000
+itemTexture = ExtResource("11_kvpfn")
 
 [node name="CloseShop" type="Button" parent="MarginContainer/Catalogue"]
 layout_mode = 0

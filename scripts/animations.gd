@@ -4,10 +4,12 @@ extends MarginContainer
 @onready var click_button: TextureButton = $CenterContainer/ClickButton
 @onready var indicators: Control = $"../Indicators"
 @onready var boredTimer: Timer = $CenterContainer/ClickButton/BoredTimer
+@onready var shopCatalogue: ColorRect = $Catalogue
 @onready var darumaAnimation: AnimationPlayer = $CenterContainer/ClickButton/Daruma/DarumaEyes/AnimationPlayer
 
 func _ready() -> void:
 	click_button.pivot_offset = click_button.size / 2
+	shopCatalogue.visible = false
 
 func _on_click_button_button_down() -> void:
 	var tween = get_tree().create_tween()
