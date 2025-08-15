@@ -471,6 +471,7 @@ script = ExtResource("8_kvpfn")
 
 [node name="Catalogue" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
+color = Color(0.486275, 1, 1, 1)
 
 [node name="Item" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
 layout_mode = 1
