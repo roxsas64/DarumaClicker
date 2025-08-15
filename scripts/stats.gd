@@ -4,9 +4,9 @@ extends VBoxContainer
 
 func _ready() -> void:
 	# Sacar valor de GameManager al iniciar este objeto
-	_on_omamori_updated(GameManager.omamori)
+	updateOmamoriLabel(GameManager.omamori)
 	# Suscribirse a futuros cambios de cantidad de omamori
-	GameManager.omamori_updated.connect(_on_omamori_updated)
+	GameManager.omamori_updated.connect(updateOmamoriLabel)
 
-func _on_omamori_updated(amount: int) -> void:
+func updateOmamoriLabel(amount: int) -> void:
 	omamori_label.text = str(amount) + " omamori"

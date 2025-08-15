@@ -6,7 +6,6 @@ extends Button
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -15,8 +14,5 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	catalogue.visible = true
 
-
-
 func _on_close_shop_pressed() -> void:
 	catalogue.visible = false
-	
