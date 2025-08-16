@@ -1,16 +1,19 @@
-[gd_scene load_steps=16 format=4 uid="uid://m71jmr38311o"]
+[gd_scene load_steps=19 format=4 uid="uid://m71jmr38311o"]
 
 [ext_resource type="Script" uid="uid://brw6i77vhxec2" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dtp8ft02o7jq" path="res://assets/tiles/Tiles.png" id="2_gee14"]
 [ext_resource type="Script" uid="uid://dgftujxalnbpw" path="res://scripts/animations.gd" id="2_p57ef"]
 [ext_resource type="Script" uid="uid://x2xvs7qtouin" path="res://scripts/destroy_1sec.gd" id="3_gee14"]
 [ext_resource type="Script" uid="uid://bxb3q7qwo3g50" path="res://scripts/stats.gd" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://c4x2u6qx3sj2t" path="res://assets/UI/Omamori.png" id="5_dinhu"]
 [ext_resource type="FontFile" uid="uid://chxh00y3mkhtv" path="res://assets/fonts/PixelGosub-ZaRz.ttf" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://bk6knrqwqdve3" path="res://assets/items/ManekiNeko.png" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dhyaci7g6fqgf" path="res://scenes/daruma.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://ciwc7otidsbn0" path="res://scripts/shop_button.gd" id="8_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cjfn0htxq8iw4" path="res://scenes/item_buy.tscn" id="8_vtaks"]
+[ext_resource type="Texture2D" uid="uid://jbgu4gjckktn" path="res://assets/UI/ShopTemp.png" id="9_trtic"]
 [ext_resource type="Texture2D" uid="uid://k3rcf0a1cqvi" path="res://assets/items/LuckyFish.png" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://ukl4pxg6f3iv" path="res://assets/UI/CrossTemp.png" id="11_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("2_gee14")
@@ -408,6 +411,14 @@ script = ExtResource("3_gee14")
 
 [node name="DestroyTimer" type="Timer" parent="Indicators/Template"]
 
+[node name="TextureRect" type="TextureRect" parent="Indicators/Template"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 42.0
+texture = ExtResource("5_dinhu")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -461,51 +472,68 @@ wait_time = 10.0
 autostart = true
 
 [node name="ShopButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(190, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_constants/outline_size = 10
+theme_override_constants/icon_max_width = 64
 theme_override_fonts/font = ExtResource("7_0tnpc")
 theme_override_font_sizes/font_size = 50
 text = "Shop"
+icon = ExtResource("9_trtic")
+expand_icon = true
 script = ExtResource("8_kvpfn")
 
-[node name="Catalogue" type="ColorRect" parent="MarginContainer"]
-layout_mode = 2
-color = Color(0.486275, 1, 1, 1)
-
-[node name="Item" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
-layout_mode = 1
-offset_left = 32.0
-offset_top = 27.0
-offset_right = -171.68
-offset_bottom = -162.712
-itemName = "maneki"
-price = 20
-itemTexture = ExtResource("8_0tnpc")
-
-[node name="Item2" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
-layout_mode = 1
-offset_left = 280.0
-offset_top = 25.0
-offset_right = 76.32
-offset_bottom = -164.712
-itemName = "caro"
-price = 20000
-itemTexture = ExtResource("11_kvpfn")
-
-[node name="CloseShop" type="Button" parent="MarginContainer/Catalogue"]
-layout_mode = 0
-offset_left = 988.0
-offset_top = 11.0
-offset_right = 1062.0
-offset_bottom = 62.0
-text = "X"
-
-[node name="manekiNeko" type="Sprite2D" parent="."]
+[node name="manekiNeko" type="Sprite2D" parent="MarginContainer"]
 visible = false
 position = Vector2(780, 131)
 scale = Vector2(3, 3)
 texture = ExtResource("8_0tnpc")
+
+[node name="Catalogue" type="ColorRect" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+color = Color(0.486275, 1, 1, 1)
+
+[node name="CloseShop" type="Button" parent="MarginContainer/Catalogue"]
+layout_mode = 0
+offset_left = 989.0
+offset_top = 9.0
+offset_right = 1064.0
+offset_bottom = 84.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("7_0tnpc")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("11_kvuet")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Item" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 11.0
+offset_right = 32.0
+offset_bottom = 11.0
+itemName = "Maneki Neko"
+price = 20
+itemTexture = ExtResource("8_0tnpc")
+
+[node name="Item2" parent="MarginContainer/Catalogue" instance=ExtResource("8_vtaks")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 265.0
+offset_top = 13.0
+offset_right = 265.0
+offset_bottom = 13.0
+itemName = "Lucky Fish"
+price = 50
+itemTexture = ExtResource("11_kvpfn")
 
 [connection signal="omamori_changed" from="." to="MarginContainer/Stats" method="_on_game_omamori_changed"]
 [connection signal="omamori_clicked" from="." to="MarginContainer" method="_on_game_omamori_clicked"]

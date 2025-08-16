@@ -28,7 +28,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	itemLabel.text = itemName
-	priceTag.text = str(price) + " dolale"
+	priceTag.text = str(price) + " 
+	omamori"
 	itemIcon.texture = itemTexture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
